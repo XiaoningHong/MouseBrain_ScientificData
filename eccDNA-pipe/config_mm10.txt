@@ -1,0 +1,67 @@
+[common]
+## pipeline version
+version                                       = V1.0.0
+## common software
+[common-software]
+python										  = /opt/anaconda3/bin/python
+Rscript                                       = /opt/anaconda3/envs/bio/bin/Rscript
+
+
+## bam or samtools tools
+bwa											  = /opt/bwa/bwa
+samtools									  = /opt/samtools-1.13/bin/samtools
+bedtools									  = /opt/anaconda3/bin/bedtools
+## qc sortware
+trim_galore									  = /opt/anaconda3/envs/bio/bin/trim_galore
+cutadapt									  = /usr/bin/cutadapt[PATH]
+
+
+#[common-database]
+Ref											= /home/DataBase/Refrence/mm10/mm10_no_alt_analysis_set_ENCODE.fasta
+gene_gff									= /home/DataBase/Refrence/mm10/annotation/gencode.vM23.annotation.gff3
+miRNA_gff									= /home/DataBase/Refrence/mm10/annotation/miRNA_mmu.gff3
+cCREs_bed									= /home/DataBase/Refrence/mm10/annotation/ENCODE_mm10_cCREs_ENCFF904ZZH.bed
+TEs_bed										= /home/DataBase/Refrence/mm10/annotation/TEs.bed
+Enhancer_bed								= /home/DataBase/Refrence/mm10/annotation/EnhancerRNATargetGene.rmdup.bed
+CpGIsland_bed								= /home/DataBase/Refrence/mm10/annotation/mm10_CpGIsland.bed.gz
+3UTR_bed									= /home/DataBase/Refrence/mm10/annotation/mm10_3UTR.bed.gz
+5UTR_bed									= /home/DataBase/Refrence/mm10/annotation/mm10_5UTR.bed.gz
+Exon_bed									= /home/DataBase/Refrence/mm10/annotation/mm10_Exons.bed.gz
+Gene2KbD_bed								= /home/DataBase/Refrence/mm10/annotation/mm10_Gene2KbD.bed.gz
+Gene2KbU_bed								= /home/DataBase/Refrence/mm10/annotation/mm10_Gene2KbU.bed.gz
+Introns_bed									= /home/DataBase/Refrence/mm10/annotation/mm10_Introns.bed.gz
+#Remove Mitochondria eccDNA
+chr_bed										= /home/DataBase/Refrence/mm10/chr.bed
+
+
+#[trim-software]
+trim_app									  = /home/hongxiaoning/pipeline/eccDNA_detecting/trim/run_trim.py
+trim_params                                   = --paired -q 28 --fastqc --gzip
+
+#[aln-software]
+aln_app                                       = /home/hongxiaoning/pipeline/eccDNA_detecting/aln/run_bwa.py
+#["no", "markDup", "removeDup"])
+markDuplicate                                 = no 
+ReadcCount									  = /home/hongxiaoning/pipeline/eccDNA_detecting/aln/Pysam_ReadsCount.py
+
+#[Circle-Map-software]
+Circle-Map									= /opt/anaconda3/bin/Circle-Map
+Circle-Map_pre								= /home/hongxiaoning/pipeline/eccDNA_detecting/CircleMap/Pre_Circle-Map.py
+Circle-Map_app								= /home/hongxiaoning/pipeline/eccDNA_detecting/CircleMap/run_Circle-Map.py
+Circle-Map_qc								= /home/hongxiaoning/pipeline/eccDNA_detecting/CircleMap/HighQualityCircle.py
+
+#[Annotation-software]
+Annotation_app								= /home/hongxiaoning/pipeline/eccDNA_detecting/CircleMap/run_Circle-Annotation.py
+
+[common-cpu]
+cpu_trim                                      = 1
+cpu_aln                                       = 16
+cpu_circle									  = 8
+cpu_ann                                       = 4
+
+[common-mem]
+mem_trim                                      = 5000
+mem_aln                                       = 20000
+mem_circle									  = 10000
+mem_ann										  = 5000
+
