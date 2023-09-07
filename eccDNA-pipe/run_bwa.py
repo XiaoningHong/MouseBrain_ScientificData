@@ -7,6 +7,24 @@ from argparse import ArgumentParser
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '/home/hongxiaoning/pipeline/bin'))
 import myc
 import time
+import pysam
+
+def ReadCount(InputFile, OutputFile):
+    if not os.path.isfile(InputFile):
+        print ('File does not exist at location provided, please check (tried "{}")'.format(InputFile))
+        exit(2)
+    print ("Loading file: {} ...".format(InputFile))  
+    f_output = open(OutputFile, 'w')
+    samfile = pysam.AlignmentFile(InputFile, "rb")
+    result  = samfile.get_index_statistics()    
+    for line in result:
+        match_obj = re.search(r'contig=\'(.+)\', mapped=(\d+)', str(line))
+        contig = match_obj.group(1)
+        mapped = match_obj.group(2)
+        f_output.write('%s\t%s\n' %(contig, mapped))
+        
+    f_output.close()
+    
 
 if __name__ == '__main__':
     #Parameters to be input.
@@ -65,7 +83,7 @@ if __name__ == '__main__':
     result_note_list.append("STAR mapping and sort")
     
     BWA_cmd = " ".join([config['bwa'], "mem -M -t", cpu_aln, "-R", "\""+group_header+"\"", config['Ref'], fq_list[0], fq_list[1], "|samtools sort -@", cpu_aln, "-o", sort_bam, "-"])
-    ReadCount_cmd = " ".join([config['python'], config['ReadcCount'], "-i", sort_bam, "-o", sample_output])
+    ReadCount(sort_bam, sample_output)
     
     if productVersion or not os.path.exists(bam):
         myc.rm_files("{}/*tmp*".format(output_path))
@@ -74,12 +92,9 @@ if __name__ == '__main__':
         sort_cmd = "set -e;{} index {};{} flagstat {} >{}.stat;set +e".format(samtools,sort_bam,samtools,sort_bam,sort_bam)
         result_note_list.append(sort_cmd)
         myc.run_command(sort_cmd, ">>>Samtools sort and index Failed")
-        result_note_list.append(ReadCount_cmd)
-        myc.run_command(ReadCount_cmd, ">>>ReadCount Failed")
-
     else:
         if not os.path.isfile(sample_output):
-            myc.run_command(ReadCount_cmd, ">>>STAR ReadCount Failed")
+            myc.run_command(ReadCount_cmd, ">>>ReadCount Failed")
 
     # mark duplicate if needs
     if args.markDuplicate != "no":
