@@ -49,7 +49,6 @@ markDuplicate                                 = no
 Circle-Map									= /opt/anaconda3/bin/Circle-Map
 Circle-Map_pre								= /home/hongxiaoning/pipeline/eccDNA_detecting/CircleMap/Pre_Circle-Map.py
 Circle-Map_app								= /home/hongxiaoning/pipeline/eccDNA_detecting/CircleMap/run_Circle-Map.py
-Circle-Map_qc								= /home/hongxiaoning/pipeline/eccDNA_detecting/CircleMap/HighQualityCircle.py
 
 #[Annotation-software]
 Annotation_app								= /home/hongxiaoning/pipeline/eccDNA_detecting/CircleMap/run_Circle-Annotation.py
