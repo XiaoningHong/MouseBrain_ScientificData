@@ -8,7 +8,6 @@ eccDNA-pipe is a standard pipeline for analyzing eccDNA-seq data using pyFlow (a
 - **Figure1.R**
 - **Figure2.R**
 - **Figure3.R**
-- **Figure4.R**
 - **Figure5.R**
 
 ## Contact
