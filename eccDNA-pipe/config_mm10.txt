@@ -44,7 +44,6 @@ trim_params                                   = --paired -q 28 --fastqc --gzip
 aln_app                                       = /home/hongxiaoning/pipeline/eccDNA_detecting/aln/run_bwa.py
 #["no", "markDup", "removeDup"])
 markDuplicate                                 = no 
-ReadcCount									  = /home/hongxiaoning/pipeline/eccDNA_detecting/aln/Pysam_ReadsCount.py
 
 #[Circle-Map-software]
 Circle-Map									= /opt/anaconda3/bin/Circle-Map
