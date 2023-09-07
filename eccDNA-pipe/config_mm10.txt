@@ -5,12 +5,14 @@ version                                       = V1.0.0
 [common-software]
 python										  = /opt/anaconda3/bin/python
 Rscript                                       = /opt/anaconda3/envs/bio/bin/Rscript
+java_latest                                   = /opt/anaconda3/bin/java
 
 
 ## bam or samtools tools
 bwa											  = /opt/bwa/bwa
 samtools									  = /opt/samtools-1.13/bin/samtools
 bedtools									  = /opt/anaconda3/bin/bedtools
+picard_latest                                 = /opt/picard_2.27.3.jar
 ## qc sortware
 trim_galore									  = /opt/anaconda3/envs/bio/bin/trim_galore
 cutadapt									  = /usr/bin/cutadapt[PATH]
