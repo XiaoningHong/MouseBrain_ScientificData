@@ -4,7 +4,6 @@
 library("ggplot2")
 library("ggpubr")
 library("ggsci")
-library(ggridges)
 
 
 #Figure3 A&b
