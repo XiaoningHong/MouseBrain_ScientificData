@@ -259,7 +259,8 @@ def dataset_cover_number(dataset_bed, bed_file):
     return(number)
 
 def Normalized_dataset_coverage(Chr_bed, Type_bed, sample_bed):
-    sample_ratio = dataset_coverge(Type_bed,sample_bed)
+    eccDNA_Number = len(open(sample_bed,'r').readlines())
+    sample_ratio = round(dataset_cover_number(Type_bed,sample_bed)/eccDNA_Number,4)
     Type_ratio = dataset_coverge(Chr_bed,Type_bed)
     Normalized_ratio=round(sample_ratio/Type_ratio, 4)
     
