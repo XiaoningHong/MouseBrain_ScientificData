@@ -39,7 +39,7 @@ for (group in c("Young", "Aged")) {
     legend.text=element_text(face="bold", color="black", size=9))+#theme(legend.position="NA")+
   theme(panel.grid = element_blank(),axis.title = element_text(size = 9))+
   theme(plot.title = element_text(hjust = 0.4, face="bold", color="black", size=12))+
-  xlab(label = NULL)+ylab(label = paste0("Normalized Genomic Coverage\n") )+
+  xlab(label = NULL)+ylab(label = paste0("Normalized ratio of genomic element\n") )+
   theme(axis.ticks=element_line(size=1,colour="black"),axis.ticks.length=unit(0.5,"lines"))+
   theme(axis.text.x = element_text(face="bold", color="black", size=9, angle=30, vjust=0.85, hjust=0.75),
         axis.text.y = element_text(face="bold", color="black", size=9),
