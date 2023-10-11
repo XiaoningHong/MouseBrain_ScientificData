@@ -1,5 +1,5 @@
 # Mouse Brain eccDNA
-This repository contains code from "Hong, X. et al. The extrachromosomal circular DNA atlas in aged and young mouse brains".
+This repository contains code from "Hong, X. et al. The extrachromosomal circular DNA atlas of aged and young mouse brains".
 
 ![image](https://github.com/XiaoningHong/MouseBrain_ScientificData/blob/main/scripts%20for%20main%20figure%20plots/figure1.png)
 ## Code
