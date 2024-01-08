@@ -10,5 +10,7 @@ eccDNA-pipe is a standard pipeline for analyzing eccDNA-seq data using pyFlow (a
 - **Script_Figure3.R**
 - **Script_Figure5.R**
 
+## License
+The code in this repository is open-source and licensed under the MIT license.
 ## Contact
 If you have any questions concerning code or data, please do not hesitate to contact us at hongxiaoning@outlook.com.
